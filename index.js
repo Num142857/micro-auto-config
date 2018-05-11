@@ -1,13 +1,13 @@
 const chokidar = require('chokidar');
 const fs = require('fs');
 const fse = require('fs-extra');
-const PROJECT_PATH = '/root/bidding/'
+const PROJECT_PATH = '.'
 
 //监听文件变化
 chokidar.watch(PROJECT_PATH, {
-    ignored: './node_modules',
+    ignored: /(^|[\/\\])\..|.git|project.config.js|node_modules/,
     awaitWriteFinish: {
-        pollInterval: 3000 
+        pollInterval: 20000
     }
 }).on('all', (event, path) => {
     // console.log(event, path);
